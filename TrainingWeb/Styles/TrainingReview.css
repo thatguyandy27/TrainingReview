@@ -3,7 +3,6 @@
     font-family: 'Segoe UI', Tahoma, Arial;
     font-size: 11px;
     font-weight: normal;
-    cursor: pointer;
 }
 
 input {
@@ -20,9 +19,32 @@ h3 {
 
 .reviewList {
     list-style: none;
+    margin-top:15px;
 }
 
 .reviewList li {
     border-top: 1px solid lightGrey;
+    margin-top:10px;
 }
 
+.reviewList li label {
+    width:100px;
+}
+
+.reviewList li textarea {
+    width:95%;
+}
+
+
+#header {
+}
+
+#bodyContainer {
+    position:fixed;
+    top:15px;
+}
+
+.star-rating img {
+   height:20px;
+
+}
