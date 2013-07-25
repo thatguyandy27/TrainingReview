@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="trainingReview">
+<head>
+    <title>Training Review</title>
+    
+    <script src="Scripts/Libraries/jquery-2.0.3.min.js"></script>
+    <script src="Scripts/Libraries/angular.min.js" type="text/javascript"></script>
+    <script src="Scripts/TrainingReview.html.js"></script>
+    <script src="Scripts/Models/TrainingModel.js"></script>
+    <script src="Scripts/Models/EmployeeTrainingModel.js"></script>
+    
+    <link href="Styles/TrainingReview.css" rel="stylesheet" />
+</head>
+<body ng-controller="trainingController">
+    <div>{{training.Name}}</div>
+    <button ng-click='addReview();'>Add Review</button>
+    <ul class="reviewList">
+        <li ng-repeat="training in training.EmployeeTrainings" ng-switch on="training.IsEditable">
+            <div ng-switch-when="false" ng-dblclick="editRecord(training);">
+                <h3>{{training.UserName}} -- {{training.TrainingDate}}</h3>
+                <div>Rating: {{training.Rating}}</div>
+                <star-rating rating="training.Rating" ></star-rating>
+                <div>{{training.Description}}</div>
+                
+            </div>
+            <div ng-switch-when="true">
+                <div>Employee:  {{training.UserName}}</div>
+                <div>TrainingDate: <input ng-model="training.TrainingDate" /></div>
+                <star-rating rating="training.Rating" isEditable="true"></star-rating> {{training.Rating}}
+                <div>Description: <textarea ng-model="training.Description"></textarea> </div>
+                <button ng-click="saveRecord(training);">Save</button>
+             </div>
+        </li>
+   <!--     <li>
+            <div>Rating:<input /></div>
+            <div>TrainingDate:<input /></div>
+            <div>Description:<textarea ></textarea></div>
+            <button>
+        </li>-->
+
+    </ul>
+</body>
+</html>
